@@ -1,6 +1,8 @@
 # To_Do_List_Backend_FastAPI
 
-Template
+## 📁 Project Structure
+
+```plaintext
 project_name/
 ├── alembic/                     # Migrations cho DB (dùng Alembic)
 │   └── env.py
