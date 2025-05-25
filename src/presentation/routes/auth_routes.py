@@ -39,3 +39,20 @@ def admin_only(current_user: str = Depends(get_current_admin)):
     Admin-only route.
     """
     return {"message": "This is an admin-only route"}
+@router.post("/register")
+def register(
+    form_data: OAuth2PasswordRequestForm = Depends(),
+    auth_service: AuthService = Depends(lambda: AuthService(UserRepositoryImpl(get_db()))),
+):
+    """
+    Register a new user.
+    """
+    try:
+        return auth_service.register(form_data.username, form_data.password)
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Internal server error",
+        ) from e

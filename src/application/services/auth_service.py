@@ -7,3 +7,7 @@ class AuthService:
 
     def login(self, username: str, password: str):
         return self.auth_use_case.login(username, password)
+    def register(self, username: str, password: str):
+        return self.auth_use_case.register(username, password)
+    def logout(self, user_id: str):
+        return self.auth_use_case.logout(user_id)
