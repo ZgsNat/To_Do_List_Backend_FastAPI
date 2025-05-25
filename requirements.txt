@@ -1,0 +1,29 @@
+fastapi==0.115.0
+uvicorn==0.30.6
+sqlalchemy==2.0.35
+psycopg==3.2.9
+pydantic==2.9.2
+pydantic-settings==2.5.2
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+alembic==1.13.3
+
+# Thư viện	Mục đích sử dụng	Giải thích
+# fastapi==0.115.0	Framework chính	Dùng để xây dựng API backend theo chuẩn RESTful, rất nhanh và hiện đại, hỗ trợ async, type hint.
+# uvicorn==0.30.6	ASGI server	Dùng để chạy FastAPI (giống như gunicorn nhưng cho ASGI). Cực nhanh và nhẹ.
+# sqlalchemy==2.0.35	ORM	Dùng để làm việc với cơ sở dữ liệu bằng Python thay vì SQL thuần (ORM = Object Relational Mapper).
+# psycopg==3.2.9 (hoặc psycopg2-binary)	PostgreSQL driver	Cho phép SQLAlchemy (hoặc bạn) kết nối và tương tác với PostgreSQL.
+# pydantic==2.9.2	Xử lý dữ liệu (schema validation)	Dùng để validate dữ liệu đầu vào, tạo schema, serialize/deserialize trong request/response.
+# pydantic-settings==2.5.2	Cấu hình bằng Pydantic	Hỗ trợ quản lý biến môi trường hoặc file cấu hình bằng Pydantic (ví dụ: Settings(BaseSettings)).
+# passlib[bcrypt]==1.7.4	Mã hóa mật khẩu	Hỗ trợ hash & verify mật khẩu với bcrypt, dùng trong các hệ thống xác thực người dùng.
+# python-jose[cryptography]==3.3.0	JWT và xác thực	Dùng để tạo và xác minh JWT token, phục vụ cho cơ chế đăng nhập, phân quyền API.
+# alembic==1.13.3	Migration cơ sở dữ liệu	Tạo và quản lý thay đổi schema database (versioning), hoạt động chung với SQLAlchemy.
+# FastAPI + Uvicorn → chạy API.
+
+# SQLAlchemy + psycopg → tương tác database PostgreSQL.
+
+# Pydantic + Pydantic-Settings → validate & cấu hình ứng dụng.
+
+# Passlib + python-jose → xử lý bảo mật: hash mật khẩu & xác thực JWT.
+
+# Alembic → cập nhật schema database dễ dàng theo code (migration).

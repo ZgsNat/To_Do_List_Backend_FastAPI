@@ -1,26 +1,24 @@
+# docker/docker-compose.yml
 version: '3.9'
-
 services:
-  web:
+  app:
     build:
       context: .
       dockerfile: docker/Dockerfile
-    container_name: fastapi_app
-    env_file:
-      - .env
     ports:
       - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:123456@db:5432/todolist
     depends_on:
       - db
-
+    volumes:
+      - .:/app
   db:
-    image: postgres:15
-    container_name: postgres_db
-    restart: always
+    image: postgres:13
     environment:
-      POSTGRES_DB: mydb
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypass
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: todolist
     ports:
       - "5432:5432"
     volumes:
